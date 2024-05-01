@@ -34,7 +34,7 @@ export class AppComponent {
       // this.submitted = true;
     });
     this.tutorialService.getAll().snapshotChanges().pipe(
-      map(changes =>
+      map((changes) =>
         changes.map(c =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
