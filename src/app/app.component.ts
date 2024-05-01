@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Tutorial, TutorialService } from './service/tutorial.service.component';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -62,9 +63,9 @@ export class AppComponent {
   constructor(private tutorialService: TutorialService) {
     // Configurar las credenciales de AWS (recomendado hacerlo en el servidor)
     AWS.config.update({
-      accessKeyId: 'AKIA2WAHYSIH2KNI6RBB',
-      secretAccessKey: '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',
-      region: 'us-east-1'
+      accessKeyId: environment.accessKeyId,
+      secretAccessKey: environment.secretAccessKey,
+      region: environment.region
     });
 
     // Crear una instancia de S3
