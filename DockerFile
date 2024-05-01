@@ -1,0 +1,26 @@
+#Seccion 1. utiliza la imagen base node:18-alpine para crear un contenedor que compila la aplicación Angular
+FROM node:18-alpine as angular
+
+#Directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+#Copia los archivos que estan en el directorio local al directorio de trabajo dentro del contenedor
+COPY package*.json .
+
+#Instalar dependencias, mas rapido que npm install
+RUN npm ci
+
+#Copiar todo el contenido del directorio local al contenedor
+COPY . .
+
+#Compilar la aplicacion dentro del contenedor para generar los archivos estaticos dentro de dist/
+RUN npm run build
+
+
+#Nueva etapa, crear un contenedor que servirá los archivos estáticos generados por la compilación de Angular.
+FROM nginx:alpine
+
+#copia los archivos estáticos generados en el primer contenedor al segundo contenedor
+COPY --from=angular /app/dist/angular15-firebase /usr/share/nginx/html
+
+EXPOSE 80
