@@ -1,0 +1,12 @@
+.zoom{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+button{
+  width: 40px;
+}

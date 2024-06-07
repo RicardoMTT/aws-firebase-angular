@@ -1,0 +1,35 @@
+.legend {
+  list-style: none;
+  padding: 0;
+}
+.legend-fixed{
+  position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.legend-salsa {
+  background-color: red;
+}
+
+.legend-my-location {
+  background-color: blue;
+}
+
+.legend-salsa-bachata {
+  background-color: purple;
+}
