@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,13 @@ export class PlacesService {
   }
 
   public getPlaces(){
+    return of([
+      {
+        name:'test 2',
+        description:'description 2',
+        coordinates:[-76.9190038,-12.2563534]
+      }
+    ])
     return this.http.get('https://run.mocky.io/v3/e62ba599-41f7-4860-abf8-15fec0004cb3');
   }
 

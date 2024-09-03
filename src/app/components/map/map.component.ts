@@ -33,6 +33,8 @@ export class MapComponent implements AfterViewInit {
         });
 
 
+        console.log('waht',this.placesService.userLocation);
+
         new Marker({ color: 'blue' })
             .setLngLat(this.placesService.userLocation)
             .addTo(map);
@@ -42,7 +44,10 @@ export class MapComponent implements AfterViewInit {
         this.placesService.getPlaces().subscribe({
           next: (response: any) => {
 
-            const arrayMarkers = response.arrayMarkers;
+            console.log('response',response);
+
+
+            const arrayMarkers = response;
 
             arrayMarkers.forEach((item, index) => {
               const popupContent = document.createElement('div');
