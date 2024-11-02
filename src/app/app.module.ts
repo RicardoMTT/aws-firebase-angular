@@ -10,7 +10,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { TutorialService } from './services/tutorial.service.component';
 import { BtnMyLocationComponent } from './btn-my-location/btn-my-location.component';
-import { AngularLogoComponent } from './angular-logo/angular-logo.component';
 import { MapComponent } from './components/map/map.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { MainComponent } from './components/main/main.component';
@@ -21,7 +20,6 @@ import { ZoomComponent } from './zoom/zoom.component';
   declarations: [
     AppComponent,
     BtnMyLocationComponent,
-    AngularLogoComponent,
     MapComponent,
     DetailComponent,
     MainComponent,

@@ -5,10 +5,7 @@ import {
   TutorialService,
 } from './services/tutorial.service.component';
 import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { PlacesService } from './services/places.service';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
-import {Popup,Marker} from 'mapbox-gl';
 import { Router } from '@angular/router';
 import { MapService } from './services/map.service';
 

@@ -39,7 +39,7 @@ export class PlacesService {
       {
         name:'test 2',
         description:'description 2',
-        coordinates:[-76.9190038,-12.2563534]
+        coordinates:[-76.96398765223572,-12.185398066554665]
       }
     ])
     return this.http.get('https://run.mocky.io/v3/e62ba599-41f7-4860-abf8-15fec0004cb3');
