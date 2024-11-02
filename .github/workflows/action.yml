@@ -1,0 +1,40 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest #El job se ejecutara en una maquina ubuntu con la version mas reciente
+    steps:
+      # es esencial para permitir que las acciones subsiguientes en el flujo de trabajo interactúen con los servicios de AWS de manera segura.
+      # por lo que si este paso no se ejecuta o falla, las acciones subsiguientes que dependan de las credenciales de AWS también fallarán,
+      # Cualquier acción subsiguiente que intente interactuar con servicios de AWS, como subir archivos a S3, desplegar recursos en EC2, etc.,
+      # probablemente fallará debido a la falta de credenciales.
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: sa-east-1
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build:prod
+
+      #Este paso solo se ejecutará si todos los pasos anteriores fueron exitosos (if: success()).
+    - name: Deploy
+      if: success()
+      run: aws s3 sync ./dist/angular15-firebase s3://locationperu #Utiliza el comando aws s3 sync para sincronizar el contenido construido en el directorio con el nombre del bucket S3
